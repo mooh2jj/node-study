@@ -1,10 +1,15 @@
-const express = require('express');
-const app = express();
+const express = require("express");
+const helmet = require("helmet");
 
-app.get("/hello", function(req, res){
-    res.send("hello world!");
-})
+const app = express();
+app.use(helmet());
+
+// 사이트 ---> 요청 --- middleware() --> Node.js
+
+// Roueter 관리!
+const mainRouter = require('./router/mainRouter');  // mainRouterdptj router 가져오는 거!
+app.use('/class101', mainRouter);                           // middelware에 설정!
 
 app.listen(3000, function(req, res){    // 3000번포트 사용할 것!
-    console.log("server start...");     // console.log => 터미널에도 나옴!
+    console.log("server 3000port start...");     // console.log => 터미널에도 나옴!
 })
