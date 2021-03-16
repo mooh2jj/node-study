@@ -6,6 +6,10 @@ app.use(helmet());
 
 // 사이트 ---> 요청 --- middleware() --> Node.js
 
+// post api 데이터를 받을 때 설정할 것!
+app.use(express.json());
+app.use(express.urlencoded());
+
 // Roueter 관리!
 const mainRouter = require('./router/mainRouter');  // mainRouterdptj router 가져오는 거!
 app.use('/class101', mainRouter);                           // middelware에 설정!
