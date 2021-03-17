@@ -2,11 +2,17 @@ const express = require("express");
 const helmet = require("helmet");
 
 const app = express();
-app.use(helmet());
+const ejs = require("ejs");
+
+// 브라우저에 띄울려면 
+app.set('view engine', 'ejs');      // 확장자명이 ejs라니!
+app.set('views', './views');
+app.use('/public', express.static(__dirname + '/public'));
 
 // 사이트 ---> 요청 --- middleware() --> Node.js
 
 // post api 데이터를 받을 때 설정할 것!
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded());
 
